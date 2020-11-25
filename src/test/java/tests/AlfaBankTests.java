@@ -13,13 +13,9 @@ public class AlfaBankTests {
 
     String testURL = "https://alfabank.ru";
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.startMaximized = true;
-    }
-
     @Test
     void checkNumberOfArchivedDeposits() {
+        Configuration.startMaximized = true;
         int expectedNumber = 5;
 
         open(testURL);
@@ -56,5 +52,13 @@ public class AlfaBankTests {
         SelenideElement element = $("[data-test-id=tabs-list-tabTitle-1]");
         element.click();
         element.parent().shouldHave(attribute("data-test-id", "tabs-list"));
+    }
+
+    @Test
+    void TEST() {
+        open("https://alfabank.ru/make-money/");
+        $(byText("Страхование вкладов")).click();
+        $(".aw_H28R.Jw_H28R.kw_H28R.f3jS9CT").closest("button").click();
+        $(".aw_H28R.Jw_H28R.kw_H28R.f3jS9CT").closest(".b3jS9CT").click();
     }
 }
